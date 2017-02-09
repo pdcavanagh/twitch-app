@@ -1,5 +1,7 @@
+var testName = 'freecodecamp';
+
 var user = {
-	name: 'freecodecamp',
+	name: testName,
 	id: undefined,
 	status: undefined
 };
@@ -14,11 +16,21 @@ function assignUserID (data) {
 function assignUserStatus (data) {
 	console.log(data);
 
+	var stat = document.createElement('div');
+	stat.setAttribute('id', user.name + 'Status');
+	document.getElementById('container').append(stat);
+
 	if(data.stream==null) {
 		user.status = 'OFFLINE';
+		document.getElementById(user.name + 'Status').innerHTML = user.status;
+	} else {
+		user.status = 'ONLINE';
+		var stat = document.createElement('a');
+		stat.setAttribute('id', user.name + 'Link');
+		stat.setAttribute('href', data.url);
+		document.getElementById(stat).append(link);
+		document.getElementById(user.name + 'Link').innerHTML = user.status;
 	}
-
-	document.getElementById('container').innerHTML = user.name + ' ' + user.id + ' ' + user.status;
 }
 
 function updateLogo (data) {
